@@ -8,7 +8,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top:2%;
     width: 50%;
 }
 
@@ -33,3 +32,16 @@ button {
     button:hover {
         background-color: #3e8e41;
     }
+
+.pages {
+    font-size: 18px;
+    text-align: center;
+    margin: 1%;
+    padding: 12px;
+    border: solid;
+    border-color: white;
+    width: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

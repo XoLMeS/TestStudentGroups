@@ -53,6 +53,33 @@ function TestViewModel() {
     self.students = ko.observableArray([]);
     self.allStudents = ko.observableArray([]);
 
+    // Pagging
+    self.currPage = ko.observable(1);
+    self.itemsPerPage = ko.observable(5);
+    self.countPages = ko.observable(4);
+    self.showPage = function (array) {
+        self.countPages(array().length / self.itemsPerPage());
+        var begin = (self.currPage()-1) * self.itemsPerPage();
+        var end = begin + self.itemsPerPage();
+        var result = array().slice(begin, end);
+        return result;
+    }
+        // Next
+    self.next = function () {
+        var page = self.currPage();
+        if (page < self.countPages()) {
+            self.currPage(page + 1);
+        }
+    }
+        // Back
+    self.back = function () {
+        var page = self.currPage();
+        if (page > 1) {
+            self.currPage(page - 1);
+        }
+    }
+   
+
     // Behaviours    
     self.goToGroup = function (group) { location.hash = 'groups/students/' + group.id };
 
@@ -177,6 +204,7 @@ function TestViewModel() {
 
         // All Groups
         this.get('#groups', function () {
+            self.currPage(1);
             self.GroupId(null);
             self.GroupData(null);
             $.get("/group", {}, self.AllGroups);
@@ -195,7 +223,7 @@ function TestViewModel() {
 
         });
 
-        this.get('', function () { this.app.runRoute('get', '#groups') });
+        this.get('', function () { self.currPage(1);this.app.runRoute('get', '#groups') });
     }).run();
 
 }

@@ -20,7 +20,7 @@
                     <th><input class="inputBtn" type="button" value="Max cap" data-bind="click: $root.sortGroups('maxcap')" /></th>
                 </tr>
             </thead>
-            <tbody data-bind="foreach: $root.groups">
+            <tbody data-bind="foreach: $root.showPage($root.groups)">
                 <tr class="row" data-bind="click: $root.goToGroup">
                     <td data-bind="text: title"></td>
                     <td data-bind="text: number"></td>
@@ -34,15 +34,15 @@
     <div class="data_table">
         <table class="groups" data-bind="with: GroupData" align="center" cellspacing="0" cellpadding="0">
             <thead class="head">
-            <tr>
-                <th><input class="inputBtn inputBtnTop" type="button" value="Name" data-bind="click: $root.sortStudents('name')" /></th>
-                <th><input class="inputBtn inputBtnTop" type="button" value="Surname" data-bind="click: $root.sortStudents('surname')" /></th>
-                <th><input class="inputBtn inputBtnTop" type="button" value="Average score" data-bind="click: $root.sortStudents('score')" /></th>
-                <th><input class="inputBtn inputBtnTop" type="button" value="Birthday" data-bind="click: $root.sortStudents('birthday')" /></th>
-                <th><input class="inputBtn inputBtnTop" type="button" value="Exp (years)" data-bind="click: $root.sortStudents('exp')" /></th>
+                <tr>
+                    <th><input class="inputBtn inputBtnTop" type="button" value="Name" data-bind="click: $root.sortStudents('name')"/></th>
+                    <th><input class="inputBtn inputBtnTop" type="button" value="Surname" data-bind="click: $root.sortStudents('surname')"/></th>
+                    <th><input class="inputBtn inputBtnTop" type="button" value="Average score" data-bind="click: $root.sortStudents('score')"/></th>
+                    <th><input class="inputBtn inputBtnTop" type="button" value="Birthday" data-bind="click: $root.sortStudents('birthday')"/></th>
+                    <th><input class="inputBtn inputBtnTop" type="button" value="Exp (years)" data-bind="click: $root.sortStudents('exp')"/></th>
                 </tr>
             </thead>
-            <tbody data-bind="foreach: $root.students">
+            <tbody data-bind="foreach: $root.showPage($root.students)">
                 <tr class="row" data-bind="click: $root.editStudent">
                     <td data-bind="text: name"></td>
                     <td data-bind="text: surname"></td>
@@ -54,11 +54,20 @@
         </table>
     </div>
 
+    <!-- Paging -->
+    <div class="pages">
+        <a href="#" id="backPage" data-bind="visible: currPage() > 1, text: currPage()-1, click: back" ></a>
+        <a href="#" id="currPage" data-bind="text: $root.currPage()" ></a>
+        <a href="#" id="nextPage" data-bind="visible: currPage() < countPages(), text: currPage()+1, click: next" ></a>
+    </div>
+
+    <!-- Controls -->
     <div class="controls">
         <button id="groupBtn">Create group</button>
         <button id="studBtn">Register student</button>
         <button id="entryBtn">New entry</button>
     </div>
+
     <!-- Create group -->
     <div id="groupModal" class="modal">
         <div class="modal-content">
@@ -66,8 +75,8 @@
             <form>
                 <div class="title">Create new group:</div><br><br>
                 <div class="modal-left">Title:   </div><input required data-bind="value: newTitle" placeholder="Title" /><br><br>
-                <div class="modal-left">Number:  </div><input required data-bind="value: newNumber" placeholder="Number" /><br><br>
-                <div class="modal-left">Maxcap:  </div><input required data-bind="value: newMaxcap" placeholder="Maxcap" /><br><br>
+                <div class="modal-left">Number:  </div><input required data-bind="value: newNumber" number /><br><br>
+                <div class="modal-left">Maxcap:  </div><input required data-bind="value: newMaxcap" number /><br><br>
                 <button type="submit" data-bind="click: newGroup">Add</button>
             </form>
         </div>
@@ -81,9 +90,9 @@
                 <div class="title">Register student:</div><br><br>
                 <div class="modal-left">Name:          </div><input required data-bind="value: $root.newName" placeholder="Name" /><br><br>
                 <div class="modal-left">Surname:       </div><input required data-bind="value: $root.newSurname" placeholder="Surname" /><br><br>
-                <div class="modal-left">Average_score: </div><input required data-bind="value: $root.newAverage_score" placeholder="Average_score" /><br><br>
+                <div class="modal-left">Average_score: </div><input required data-bind="value: $root.newAverage_score" number /><br><br>
                 <div class="modal-left">Birthday:      </div><input required data-bind="value: $root.newBirthday" type='date' /><br><br>
-                <div class="modal-left">Exp:           </div><input required data-bind="value: $root.newExp" placeholder="Exp" /><br><br>
+                <div class="modal-left">Exp:           </div><input required data-bind="value: $root.newExp" number /><br><br>
                 <button type="submit" data-bind="click: $root.newStudent">Add</button>
             </form>
         </div>
