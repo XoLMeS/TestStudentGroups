@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using Microsoft.EntityFrameworkCore;
+using TestApp.Models;
+
 namespace TestApp
 {
     public class Startup
@@ -25,6 +28,12 @@ namespace TestApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //   services.AddDbContext<TodoContext>(opt =>
+            //        opt.UseInMemoryDatabase("TodoList"));
+
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=TestApp;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<TestContext>
+                (options => options.UseSqlServer(connection));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -41,6 +50,8 @@ namespace TestApp
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

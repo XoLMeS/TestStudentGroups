@@ -1,0 +1,35 @@
+﻿body {
+    background-color: #17141f;
+    color: #c4c4c4;
+}
+
+
+.controls {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:2%;
+    width: 50%;
+}
+
+.controls button {
+    width: 33%;
+}
+
+
+button {
+    cursor: pointer;
+    background-color: #392e5c; /* Green */
+    border: solid;
+    border-color: white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+    button:hover {
+        background-color: #3e8e41;
+    }
