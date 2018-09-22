@@ -1,42 +1,24 @@
-﻿.row{
+﻿td{
     cursor:pointer;
-    border: none;
 }
 
-    .row:hover {
-        background-color: #3e8e41;
-        color: #ffffff;
-    }
+th{
+    padding: 0px;
+}
 
-
-table {
-    width: 50%;
-    text-align: center;
+.inputBtn {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #392e5c; /* Green */
     border: solid;
     border-color: white;
-    background-color: #392e5c;
-}
-
-.head {
-    color: #ffffff;
-}
-
-.inputBtn{
-cursor: pointer;
-background-color: #392e5c; /* Green */
-border: solid;
-border-color: white;
-color: white;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-width: 100%;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%;
 }
 
     .inputBtn:hover {
         background-color: #3e8e41;
     }
-
-.inputBtnTop{
-    border-top: none;
-}

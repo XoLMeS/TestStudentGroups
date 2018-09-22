@@ -10,62 +10,72 @@
     <h2><strong data-bind="text: title"></strong></h2>
 
     <!-- Show all groups -->
-    <div class="data_table">
-        <table class="groups" data-bind="with: AllGroups" align="center" cellspacing="0" cellpadding="0">
-            <thead class="head">
-                <tr>
-                    <th><input class="inputBtn" type="button" value="Title" data-bind="click: $root.sortGroups('title')"/></th>
-                    <th><input class="inputBtn" type="button" value="Number" data-bind="click: $root.sortGroups('number')"/></th>
-                    <th><input class="inputBtn" type="button" value="Capacity" data-bind="click: $root.sortGroups('capacity')" /></th>
-                    <th><input class="inputBtn" type="button" value="Max cap" data-bind="click: $root.sortGroups('maxcap')" /></th>
-                </tr>
-            </thead>
-            <tbody data-bind="foreach: $root.showPage($root.groups)">
-                <tr class="row" data-bind="click: $root.goToGroup">
-                    <td data-bind="text: title"></td>
-                    <td data-bind="text: number"></td>
-                    <td data-bind="text: capacity"></td>
-                    <td data-bind="text: maxcap"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered table-dark table-hover" data-bind="with: AllGroups">
+        <thead>
+            <tr>
+                <th scope="col"><input class="inputBtn" type="button" value="Title" data-bind="click: $root.sortGroups('title')" /></th>
+                <th scope="col"><input class="inputBtn" type="button" value="Number" data-bind="click: $root.sortGroups('number')" /></th>
+                <th scope="col"><input class="inputBtn" type="button" value="Capacity" data-bind="click: $root.sortGroups('capacity')" /></th>
+                <th scope="col"><input class="inputBtn" type="button" value="Max cap" data-bind="click: $root.sortGroups('maxcap')" /></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $root.showPage($root.groups)">
+            <tr data-bind="click: $root.goToGroup">
+                <td data-bind="text: title" scope="row"></td>
+                <td data-bind="text: number"></td>
+                <td data-bind="text: capacity"></td>
+                <td data-bind="text: maxcap"></td>
+            </tr>
+        </tbody>
+    </table>
+
     <!-- Show group -->
-    <div class="data_table">
-        <table class="groups" data-bind="with: GroupData" align="center" cellspacing="0" cellpadding="0">
-            <thead class="head">
-                <tr>
-                    <th><input class="inputBtn inputBtnTop" type="button" value="Name" data-bind="click: $root.sortStudents('name')"/></th>
-                    <th><input class="inputBtn inputBtnTop" type="button" value="Surname" data-bind="click: $root.sortStudents('surname')"/></th>
-                    <th><input class="inputBtn inputBtnTop" type="button" value="Average score" data-bind="click: $root.sortStudents('score')"/></th>
-                    <th><input class="inputBtn inputBtnTop" type="button" value="Birthday" data-bind="click: $root.sortStudents('birthday')"/></th>
-                    <th><input class="inputBtn inputBtnTop" type="button" value="Exp (years)" data-bind="click: $root.sortStudents('exp')"/></th>
-                </tr>
-            </thead>
-            <tbody data-bind="foreach: $root.showPage($root.students)">
-                <tr class="row" data-bind="click: $root.editStudent">
-                    <td data-bind="text: name"></td>
-                    <td data-bind="text: surname"></td>
-                    <td data-bind="text: average_score"></td>
-                    <td data-bind="text: birthday"></td>
-                    <td data-bind="text: exp"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered table-dark table-hover" data-bind="with: GroupData">
+        <thead>
+            <tr>
+                <th scope="col"><input class="inputBtn inputBtnTop" type="button" value="Name" data-bind="click: $root.sortStudents('name')" /></th>
+                <th scope="col"><input class="inputBtn inputBtnTop" type="button" value="Surname" data-bind="click: $root.sortStudents('surname')" /></th>
+                <th scope="col"><input class="inputBtn inputBtnTop" type="button" value="Average score" data-bind="click: $root.sortStudents('score')" /></th>
+                <th scope="col"><input class="inputBtn inputBtnTop" type="button" value="Birthday" data-bind="click: $root.sortStudents('birthday')" /></th>
+                <th scope="col"><input class="inputBtn inputBtnTop" type="button" value="Exp (years)" data-bind="click: $root.sortStudents('exp')" /></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $root.showPage($root.students)">
+            <tr data-bind="click: $root.editStudent">
+                <td data-bind="text: name" scope="row"></td>
+                <td data-bind="text: surname"></td>
+                <td data-bind="text: average_score"></td>
+                <td data-bind="text: birthday"></td>
+                <td data-bind="text: exp"></td>
+            </tr>
+        </tbody>
+    </table>
 
     <!-- Paging -->
-    <div class="pages">
-        <a href="#" id="backPage" data-bind="visible: currPage() > 1, text: currPage()-1, click: back" ></a>
-        <a href="#" id="currPage" data-bind="text: $root.currPage()" ></a>
-        <a href="#" id="nextPage" data-bind="visible: currPage() < countPages(), text: currPage()+1, click: next" ></a>
+    <div class="container pages">
+        <div class="row">
+            <div class="col-sm">
+                <a href="#" id="backPage" data-bind="visible: currPage() > 1, text: currPage()-1, click: back"></a>
+                <a href="#" id="currPage" data-bind="text: $root.currPage()"></a>
+                <a href="#" id="nextPage" data-bind="visible: currPage() < countPages(), text: currPage()+1, click: next"></a>
+            </div>
+        </div>
     </div>
 
+
     <!-- Controls -->
-    <div class="controls">
-        <button id="groupBtn">Create group</button>
-        <button id="studBtn">Register student</button>
-        <button id="entryBtn">New entry</button>
+    <div class="container controls">
+        <div class="row">
+            <div class="col-sm">
+                <button id="groupBtn">Create group</button>
+            </div>
+            <div class="col-sm">
+                <button id="studBtn">Register student</button>
+            </div>
+            <div class="col-sm">
+                <button id="entryBtn">New entry</button>
+            </div>
+        </div>
     </div>
 
     <!-- Create group -->
@@ -88,11 +98,11 @@
             <span class="close">&times;</span>
             <form>
                 <div class="title">Register student:</div><br><br>
-                <div class="modal-left">Name:          </div><input required data-bind="value: $root.newName" placeholder="Name" /><br><br>
-                <div class="modal-left">Surname:       </div><input required data-bind="value: $root.newSurname" placeholder="Surname" /><br><br>
-                <div class="modal-left">Average_score: </div><input required data-bind="value: $root.newAverage_score" number /><br><br>
-                <div class="modal-left">Birthday:      </div><input required data-bind="value: $root.newBirthday" type='date' /><br><br>
-                <div class="modal-left">Exp:           </div><input required data-bind="value: $root.newExp" number /><br><br>
+                <div class="modal-left">Name:          </div><input required data-bind="value: newName" placeholder="Name" /><br><br>
+                <div class="modal-left">Surname:       </div><input required data-bind="value: newSurname" placeholder="Surname" /><br><br>
+                <div class="modal-left">Average_score: </div><input required data-bind="value: newAverage_score" number /><br><br>
+                <div class="modal-left">Birthday:      </div><input required data-bind="value: newBirthday" type='date' /><br><br>
+                <div class="modal-left">Exp:           </div><input required data-bind="value: newExp" number /><br><br>
                 <button type="submit" data-bind="click: $root.newStudent">Add</button>
             </form>
         </div>
@@ -102,6 +112,7 @@
     <div id="entryModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <!-- Choose group -->
             <div class="dropdown">
                 <button onclick="selectToggle('group')" class="dropbtn" id="groupSelectBtn">Choose Group</button>
                 <div id="groupSelect" class="dropdown-content">
@@ -111,12 +122,13 @@
                     </div>
                 </div>
             </div>
+            <!-- Choose student -->
             <div class="dropdown">
                 <button onclick="selectToggle('student')" class="dropbtn" id="studentSelectBtn" data-bind="click: $root.loadStudents">Choose Student</button>
                 <div id="studentSelect" class="dropdown-content">
                     <input type="text" placeholder="Search.." id="studentInput" onkeyup="filter('student')">
                     <div data-bind="foreach: $root.allStudents">
-                        <a href="#" onclick="return choosStudent(event);" data-bind="text: title"></a>
+                        <a href="#" onclick="return chooseStudent(event);" data-bind="text: name"></a>
                     </div>
                 </div>
             </div>
@@ -125,13 +137,23 @@
 
 
     <!-- css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="modal.css">
     <link rel="stylesheet" type="text/css" href="data_table.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 
+
     <!-- js -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
             crossorigin="anonymous"></script>
     <script src="sammy.js" type="text/javascript"></script>
     <script src='https://knockoutjs.com/downloads/knockout-3.4.2.js'></script>

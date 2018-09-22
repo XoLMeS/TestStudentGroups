@@ -109,7 +109,7 @@ function TestViewModel() {
         $.getJSON("/student", function (array) {
             console.log("getStudents");
             var mappedStudents = $.map(array, function (item) { return new Student(item) });
-            self.allStudents([]);
+            self.allStudents(mappedStudents);
         });
 
     }
@@ -214,6 +214,7 @@ function TestViewModel() {
         this.get('#groups/students/:groupId', function () {
             self.GroupId(this.params.groupId);
             self.AllGroups(null);
+            self.title("Students");
             $.get("/group/students", { id: this.params.groupId }, self.GroupData);
 
             $.getJSON("/group/students", { id: this.params.groupId },function (GroupData) {
@@ -223,7 +224,7 @@ function TestViewModel() {
 
         });
 
-        this.get('', function () { self.currPage(1);this.app.runRoute('get', '#groups') });
+        this.get('', function () { self.title("Groups");self.currPage(1);this.app.runRoute('get', '#groups') });
     }).run();
 
 }
