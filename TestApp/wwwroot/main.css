@@ -21,6 +21,8 @@ button {
     background-color: #392e5c;
     border: solid;
     border-color: white;
+    border-width: 0.5px;
+    border-radius: 15px;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -38,20 +40,39 @@ button {
     text-align: center;
     margin: 1%;
     padding: 12px;
-    border: solid;
-    border-color: white;
+
     width: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+.page {
+    background-color: #392e5c;
+    border: solid;
+    border-color: #392e5c;
+    border-width: 0.5px;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+}
 
-    .pages a {
-        padding: 10px;
-        background-color: #392e5c;
-        color: white;
-        display: inline-block;
-    }
+#currPage {
+    background-color: #3e8e41;
+    border: solid;
+    border-color: #3e8e41;
+    border-width: 0.5px;
+    border-radius: 8px;
+}
+
+.pages a {
+    padding: 10px;
+    color: white;
+    display: inline-block;
+}
         .pages a:hover {
             background-color: #3e8e41;
+            border: solid;
+            border-color: #3e8e41;
+            border-width: 0.5px;
+            border-radius: 8px;
         }

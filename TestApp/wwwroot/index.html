@@ -55,9 +55,9 @@
     <div class="container pages">
         <div class="row">
             <div class="col-sm">
-                <a href="#" id="backPage" data-bind="visible: currPage() > 1, text: currPage()-1, click: back"></a>
-                <a href="#" id="currPage" data-bind="text: $root.currPage()"></a>
-                <a href="#" id="nextPage" data-bind="visible: currPage() < countPages(), text: currPage()+1, click: next"></a>
+                <div class="page"><a href="#" id="backPage" data-bind="visible: currPage() > 1, text: currPage()-1, click: back"></a></div>
+                <div class="page"><a href="#" id="currPage" data-bind="text: $root.currPage()"></a></div>
+                <div class="page"><a href="#" id="nextPage" data-bind="visible: currPage() < countPages(), text: currPage()+1, click: next"></a></div>
             </div>
         </div>
     </div>

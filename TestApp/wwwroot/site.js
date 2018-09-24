@@ -55,7 +55,7 @@ function TestViewModel() {
 
     // Pagging
     self.currPage = ko.observable(1);
-    self.itemsPerPage = ko.observable(5);
+    self.itemsPerPage = ko.observable(10);
     self.countPages = ko.observable(4);
     self.showPage = function (array) {
         self.countPages(array().length / self.itemsPerPage());

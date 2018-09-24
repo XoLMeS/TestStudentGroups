@@ -11,12 +11,15 @@ th{
     cursor: pointer;
     background-color: #392e5c; /* Green */
     border: solid;
+    border-width: 0.5px;
     border-color: white;
+    border-radius: 15px;
     color: white;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     width: 100%;
+    font-size: 20px;
 }
 
     .inputBtn:hover {
